@@ -1,39 +1,43 @@
 # 🤖 AI Review
 
-AI Review is a CLI-based security scanner built with Node.js that analyzes JavaScript files and detects common security vulnerabilities in code using AI-powered review capabilities through the Groq API.
+AI Review is an AI-powered CLI tool that reviews Git diffs and detects security vulnerabilities in JavaScript code using the Groq API and Llama 3.3 70B.
 
-The tool provides developer-friendly warnings, severity levels, and actionable suggestions to improve application security before deployment.
-
----
-
-## 🚀 Features
-
-* Detects hardcoded passwords
-* Detects unsafe `eval()` usage
-* Detects insecure HTTP password transmission
-* Flags deprecated or insecure modules
-* AI-powered code review using Groq API
-* Clean terminal-based review output
-* Severity-based issue reporting
+It scans staged changes or diffs from your Git repository and generates developer-friendly security reports with severity levels, explanations, and suggested fixes directly in the terminal.
 
 ---
 
-## 🛠️ Tech Stack
+# ✨ Features
+
+* 🔍 Reviews staged Git changes
+* 🚨 Detects critical security vulnerabilities
+* 🤖 AI-powered analysis using Groq + Llama 3.3 70B
+* 🎨 Clean terminal UI with severity indicators
+* ⚡ Fast CLI workflow for developers
+* 📋 Actionable remediation suggestions
+
+---
+
+# 🛠️ Tech Stack
 
 * Node.js
 * JavaScript
 * Groq API
-* CLI Development
+* Llama 3.3 70B Versatile
+* Commander.js
+* Chalk
+* Ora
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
-```bash id="bxu5dk"
+```bash id="t9vr0t"
 ai-review/
 │
-├── src/              # Main CLI logic
-├── test.js           # Sample vulnerable file
+├── src/
+│   └── index.js        # Main CLI logic
+│
+├── test.js             # Sample vulnerable file
 ├── package.json
 ├── package-lock.json
 └── .gitignore
@@ -41,33 +45,39 @@ ai-review/
 
 ---
 
-## ⚡ Installation
+# ⚡ Installation
 
 Clone the repository:
 
-```bash id="tk6dlt"
+```bash id="s9m19i"
 git clone https://github.com/harshiniramasamy5-star/ai-review.git
 ```
 
-Move into the project directory:
+Move into the project folder:
 
-```bash id="mf0eqh"
+```bash id="zv0kq8"
 cd ai-review
 ```
 
 Install dependencies:
 
-```bash id="9j6v7w"
+```bash id="1e1nki"
 npm install
 ```
 
 ---
 
-## 🔑 Setup Groq API Key
+# 🔑 Setup API Key
 
-Create a `.env` file in the root directory and add your Groq API key:
+Export your Groq API key:
 
-```env
+```bash id="lgm6wq"
+export GROQ_API_KEY=your_api_key_here
+```
+
+Or create a `.env` file:
+
+```env id="7uwi4u"
 GROQ_API_KEY=your_api_key_here
 ```
 
@@ -77,53 +87,82 @@ https://console.groq.com/keys
 
 ---
 
-## ▶️ Usage
+# ▶️ Usage
 
-Run the AI review scanner:
+## Review staged Git changes
 
-```bash id="w86n8d"
-node src/index.js test.js
+```bash id="wk5fq5"
+node src/index.js staged
 ```
 
-Example output:
+## Review current diff against HEAD
 
-```bash id="77hh4n"
-CRITICAL  ai-review/test.js:1
-The code is storing a password in plain text, which is a significant security risk.
+```bash id="9r3x2k"
+node src/index.js diff
+```
 
-→ The password should be stored securely, such as using environment variables or a secrets manager.
+## Review against another branch/commit
+
+```bash id="h4tyu8"
+node src/index.js diff main
 ```
 
 ---
 
-## 🔐 Vulnerabilities Currently Detected
+# 📸 Example Output
 
-* Plain text password storage
-* Deprecated MySQL module usage
-* Unsafe `eval()` execution
-* Password transmission over HTTP
+```bash id="z3qih2"
+──────────────────────────────────────────────────────────────
+  ai-review
+──────────────────────────────────────────────────────────────
+
+ CRITICAL  ai-review/test.js:3
+ The code is using eval() with user input, which is a significant security risk.
+
+ → The code should use a safer way to handle user input.
+
+──────────────────────────────────────────────────────────────
+
+ █░░░░░░░░░  1/10
+
+ 4 critical
+```
 
 ---
 
-## 📈 Future Improvements
+# 🔐 Vulnerabilities Detected
 
-* AI-generated code fix suggestions
+Currently detects issues such as:
+
+* Hardcoded passwords
+* Unsafe `eval()` usage
+* Plaintext HTTP requests
+* Deprecated/insecure modules
+* Sensitive token exposure
+* Insecure authentication patterns
+
+---
+
+# 🚀 Future Improvements
+
 * Support for multiple programming languages
+* AI-generated automatic fixes
 * GitHub Actions integration
 * VS Code extension
-* Export reports in JSON/HTML format
+* HTML/JSON report export
+* Custom security rule configuration
 
 ---
 
 
 
-## 📄 License
+# 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 Harshini Ramasamy
 
