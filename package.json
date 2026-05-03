@@ -1,0 +1,21 @@
+{
+  "name": "ai-review",
+  "version": "1.0.0",
+  "description": "AI-powered code reviewer for your git diffs",
+  "type": "module",
+  "bin": {
+    "ai-review": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "ora": "^8.1.1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
