@@ -1,6 +1,8 @@
 # 🤖 AI Review
 
-AI Review is a CLI-based security scanner built with Node.js that analyzes JavaScript files and detects common security vulnerabilities in code. The tool provides developer-friendly warnings, severity levels, and suggestions to improve application security before deployment.
+AI Review is a CLI-based security scanner built with Node.js that analyzes JavaScript files and detects common security vulnerabilities in code using AI-powered review capabilities through the Groq API.
+
+The tool provides developer-friendly warnings, severity levels, and actionable suggestions to improve application security before deployment.
 
 ---
 
@@ -10,6 +12,7 @@ AI Review is a CLI-based security scanner built with Node.js that analyzes JavaS
 * Detects unsafe `eval()` usage
 * Detects insecure HTTP password transmission
 * Flags deprecated or insecure modules
+* AI-powered code review using Groq API
 * Clean terminal-based review output
 * Severity-based issue reporting
 
@@ -19,13 +22,14 @@ AI Review is a CLI-based security scanner built with Node.js that analyzes JavaS
 
 * Node.js
 * JavaScript
+* Groq API
 * CLI Development
 
 ---
 
 ## 📂 Project Structure
 
-```bash
+```bash id="bxu5dk"
 ai-review/
 │
 ├── src/              # Main CLI logic
@@ -41,21 +45,35 @@ ai-review/
 
 Clone the repository:
 
-```bash
+```bash id="tk6dlt"
 git clone https://github.com/harshiniramasamy5-star/ai-review.git
 ```
 
 Move into the project directory:
 
-```bash
+```bash id="mf0eqh"
 cd ai-review
 ```
 
 Install dependencies:
 
-```bash
+```bash id="9j6v7w"
 npm install
 ```
+
+---
+
+## 🔑 Setup Groq API Key
+
+Create a `.env` file in the root directory and add your Groq API key:
+
+```env
+GROQ_API_KEY=your_api_key_here
+```
+
+Get your API key from:
+
+https://console.groq.com/keys
 
 ---
 
@@ -63,13 +81,13 @@ npm install
 
 Run the AI review scanner:
 
-```bash
+```bash id="w86n8d"
 node src/index.js test.js
 ```
 
 Example output:
 
-```bash
+```bash id="77hh4n"
 CRITICAL  ai-review/test.js:1
 The code is storing a password in plain text, which is a significant security risk.
 
@@ -97,7 +115,16 @@ The code is storing a password in plain text, which is a significant security ri
 
 ---
 
+## 🤝 Contributing
 
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+---
 
 ## 📄 License
 
